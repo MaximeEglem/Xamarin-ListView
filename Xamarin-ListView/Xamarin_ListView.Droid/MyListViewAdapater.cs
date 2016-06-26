@@ -12,19 +12,19 @@ using Android.Widget;
 
 namespace Xamarin_ListView.Droid
 {
-    class MyListViewAdapater : BaseAdapter<string>
+    class MyListViewAdapater : BaseAdapter<Person>
     {
 
-        private List<string> mItems;
+        private List<Person> mItems;
         private Context mContext;
 
-        public MyListViewAdapater(Context context, List<String> items)
+        public MyListViewAdapater(Context context, List<Person> items)
         {
             this.mItems = items;
             this.mContext = context;
         }
 
-        public override string this[int position]
+        public override Person this[int position]
         {
             get
             {return mItems[position];}
@@ -49,8 +49,14 @@ namespace Xamarin_ListView.Droid
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.ListView_row, null, false);
             }
 
-            TextView txtName = row.FindViewById<TextView>(Resource.Id.txtName);
-            txtName.Text = mItems[position];
+            TextView txtFirstName = row.FindViewById<TextView>(Resource.Id.txtFirstName);
+            txtFirstName.Text = mItems[position].firstName;
+            TextView txtLastName = row.FindViewById<TextView>(Resource.Id.txtLastName);
+            txtLastName.Text = mItems[position].lastName;
+            TextView txtAge = row.FindViewById<TextView>(Resource.Id.txtAge);
+            txtAge.Text = mItems[position].age;
+            TextView txtGender = row.FindViewById<TextView>(Resource.Id.txtGender);
+            txtGender.Text = mItems[position].gender;
 
             return row;
         }

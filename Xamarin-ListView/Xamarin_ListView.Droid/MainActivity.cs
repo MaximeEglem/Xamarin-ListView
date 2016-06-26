@@ -14,7 +14,7 @@ namespace Xamarin_ListView.Droid
 	public class MainActivity : Activity
 	{
 
-        private List<string> mItems;
+        private List<Person> mItems;
         private ListView mListView;
 
 		protected override void OnCreate (Bundle bundle)
