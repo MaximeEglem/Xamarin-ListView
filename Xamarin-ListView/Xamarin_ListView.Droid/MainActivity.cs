@@ -30,9 +30,22 @@ namespace Xamarin_ListView.Droid
             MyListViewAdapater adapter = new MyListViewAdapater(this, mItems);
 
             mListView.Adapter = adapter;
-            
+
+            mListView.ItemClick += MListView_ItemClick;
+            mListView.ItemLongClick += MListView_ItemLongClick;
+
         }
-	}
+
+        private void MListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            Console.WriteLine(mItems[e.Position].lastName);
+        }
+
+        private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Console.WriteLine(mItems[e.Position].firstName);
+        }
+    }
 }
 
 
