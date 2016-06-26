@@ -27,7 +27,7 @@ namespace Xamarin_ListView.Droid
 			SetContentView (Resource.Layout.Main);
             mListView = FindViewById<ListView>(Resource.Id.myListView);
 
-            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mItems);
+            MyListViewAdapater adapter = new MyListViewAdapater(this, mItems);
 
             mListView.Adapter = adapter;
             
