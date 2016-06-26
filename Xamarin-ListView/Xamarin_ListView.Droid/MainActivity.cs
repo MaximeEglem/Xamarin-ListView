@@ -20,14 +20,12 @@ namespace Xamarin_ListView.Droid
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-            
+
+            MyClass test = new MyClass();
+            mItems = test.getList();
+
 			SetContentView (Resource.Layout.Main);
             mListView = FindViewById<ListView>(Resource.Id.myListView);
-
-            mItems = new List<string>();
-            mItems.Add("Maxime");
-            mItems.Add("Alex");
-            mItems.Add("Bob");
 
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mItems);
 
