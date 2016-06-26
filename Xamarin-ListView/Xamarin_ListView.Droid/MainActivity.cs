@@ -6,29 +6,34 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Collections.Generic;
 
 namespace Xamarin_ListView.Droid
 {
 	[Activity (Label = "Xamarin_ListView.Droid", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
-		int count = 1;
+
+        private List<string> mItems;
+        private ListView mListView;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
-			// Set our view from the "main" layout resource
+            
 			SetContentView (Resource.Layout.Main);
+            mListView = FindViewById<ListView>(Resource.Id.myListView);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
-		}
+            mItems = new List<string>();
+            mItems.Add("Maxime");
+            mItems.Add("Alex");
+            mItems.Add("Bob");
+
+            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mItems);
+
+            mListView.Adapter = adapter;
+            
+        }
 	}
 }
 
